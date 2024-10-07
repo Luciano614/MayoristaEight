@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+    padding-top: 350px;
+    background-image: url(../../views/img/logo-1.jpg);
+    
+}
+#empleado{
+    color: lightcoral;
+    width: 500px;
+    height: 65px;
+    font-size: 30px;
+    border: solid red;
+    border-radius: 10px;
+}
+#gerente{
+    color: lightcoral;
+    width: 500px;
+    height: 65px;
+    font-size: 30px;
+    border: solid red;
+    border-radius: 10px;
+}

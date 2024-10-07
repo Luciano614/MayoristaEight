@@ -1,0 +1,132 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-10-2024 a las 15:39:16
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `mayorista eight`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `david`
+--
+
+CREATE TABLE `david` (
+  `id_david` int(50) NOT NULL,
+  `Usuario` int(50) NOT NULL,
+  `Contraseña` int(50) NOT NULL,
+  `Codigo G` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleados`
+--
+
+CREATE TABLE `empleados` (
+  `Nombre` int(50) NOT NULL,
+  `Apellido` int(50) NOT NULL,
+  `Email` int(50) NOT NULL,
+  `Contraseña` int(50) NOT NULL,
+  `Numero E` int(50) NOT NULL,
+  `id_nahuel` int(50) NOT NULL,
+  `id_david` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nahuel`
+--
+
+CREATE TABLE `nahuel` (
+  `id_nahuel` int(50) NOT NULL,
+  `Usuario` int(50) NOT NULL,
+  `Contraseña` int(50) NOT NULL,
+  `Codigo G` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tareas`
+--
+
+CREATE TABLE `tareas` (
+  `Descarga de Producto` int(50) NOT NULL,
+  `Seleccion de Producto` int(50) NOT NULL,
+  `Empaquetado de Producto` int(50) NOT NULL,
+  `Etiquetado de Producto` int(50) NOT NULL,
+  `Carga de Producto` int(50) NOT NULL,
+  `Distribución de Producto` int(50) NOT NULL,
+  `Numero E` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `david`
+--
+ALTER TABLE `david`
+  ADD PRIMARY KEY (`id_david`);
+
+--
+-- Indices de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD PRIMARY KEY (`Numero E`),
+  ADD KEY `id_nahuel` (`id_nahuel`),
+  ADD KEY `id_david` (`id_david`);
+
+--
+-- Indices de la tabla `nahuel`
+--
+ALTER TABLE `nahuel`
+  ADD PRIMARY KEY (`id_nahuel`);
+
+--
+-- Indices de la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  ADD KEY `id_tareas` (`Numero E`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD CONSTRAINT `id_david` FOREIGN KEY (`id_david`) REFERENCES `david` (`id_david`),
+  ADD CONSTRAINT `id_nahuel` FOREIGN KEY (`id_nahuel`) REFERENCES `nahuel` (`id_nahuel`);
+
+--
+-- Filtros para la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  ADD CONSTRAINT `id_tareas` FOREIGN KEY (`Numero E`) REFERENCES `empleados` (`Numero E`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
